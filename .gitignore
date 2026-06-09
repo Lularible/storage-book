@@ -1,0 +1,16 @@
+# Build artifacts
+knotfs/knotfs_test
+knotfs/*.o
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+*~
