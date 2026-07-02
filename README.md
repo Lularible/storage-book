@@ -29,11 +29,12 @@ make && make test
 
 ## 姊妹篇
 
-本书是**汽车电子七部曲系列**中的存储之卷，另外三部已发布：
+本书是**汽车电子七部曲系列**中的存储之卷，另外四部已发布：
 
 - **[从沙子到车辙——一个工程师的理解](https://github.com/Lularible/from-sand-to-ruts)** — 汽车电子技术总纲
 - **[PTP 技术书——从思想实验到协议实现](https://github.com/Lularible/ptp-book)** — 时间同步协议
 - **[HSM 技术书——从思想实验到安全基石](https://github.com/Lularible/hsm-book)** — 硬件安全模块
+- **[UDS 技术书——从望闻问切到UDS协议实现](https://github.com/Lularible/uds-book)** — UDS 诊断协议
 
-"汽车电子七部曲"是一个持续更新的系列——还有诊断、功能安全、软件工程三本在打磨中。
+"汽车电子七部曲"是一个持续更新的系列——还有功能安全、软件工程两本在打磨中。
 如果觉得这系列对你有用，不妨给个 ⭐ 关注进度。
