@@ -114,7 +114,8 @@ typedef enum {
   ST_MNT_RD_SB0 = 20,
   ST_MNT_RD_SB1 = 21,
   ST_MNT_SEL = 22,
-  ST_MNT_REPLAY = 23,
+  ST_MNT_RD_LOG = 23,
+  ST_MNT_REPLAY = 24,
   /* write */
   ST_WRT_INIT = 30,
   ST_WRT_ALLOC = 31,
@@ -405,7 +406,7 @@ static void replay_log(void) {
   knot_log_t e;
   for (uint32_t i = 0; i < sb.log_count; i++) {
     uint32_t pos = SB_HEADER_SZ + i * LOG_ENTRY_SZ;
-    memcpy(&e, ((uint8_t *)&sb) + pos, sizeof(e));
+    memcpy(&e, tmp + pos, sizeof(e));
     if (e.tag == 0xFF)
       break;
     if (e.crc32 != log_checksum(&e))
@@ -494,9 +495,11 @@ static void do_format(void) {
 
 /* ---- mount ---- */
 static void do_mount(void) {
+  knot_sb_t sb0;
+
   switch (cur.st) {
   case ST_MNT_RD_SB0:
-    fdev_read(KNOTFS_SB0_BLK, &sb, sizeof(sb));
+    fdev_read(KNOTFS_SB0_BLK, tmp, KNOTFS_BLOCK_SIZE);
     cur.st = ST_MNT_RD_SB1;
     return;
   case ST_MNT_RD_SB1:
@@ -504,7 +507,8 @@ static void do_mount(void) {
     cur.st = ST_MNT_SEL;
     return;
   case ST_MNT_SEL: {
-    bool ok0 = (sb.magic == KNOTFS_MAGIC && sb.crc32 == sb_checksum(&sb));
+    memcpy(&sb0, tmp, sizeof(knot_sb_t));
+    bool ok0 = (sb0.magic == KNOTFS_MAGIC && sb0.crc32 == sb_checksum(&sb0));
     bool ok1 =
         (sb_alt.magic == KNOTFS_MAGIC && sb_alt.crc32 == sb_checksum(&sb_alt));
     if (!ok0 && !ok1) {
@@ -512,13 +516,24 @@ static void do_mount(void) {
       cur.st = ST_ERR;
       return;
     }
-    if (!ok0)
+    if (!ok0) {
       memcpy(&sb, &sb_alt, sizeof(sb));
-    else if (ok1 && sb_alt.sequence > sb.sequence)
+      fdev_read(KNOTFS_SB1_BLK, tmp, KNOTFS_BLOCK_SIZE);
+      cur.st = ST_MNT_RD_LOG;
+    } else if (ok1 && sb_alt.sequence > sb0.sequence) {
       memcpy(&sb, &sb_alt, sizeof(sb));
-    cur.st = ST_MNT_REPLAY;
+      fdev_read(KNOTFS_SB1_BLK, tmp, KNOTFS_BLOCK_SIZE);
+      cur.st = ST_MNT_RD_LOG;
+    } else {
+      memcpy(&sb, &sb0, sizeof(sb));
+      cur.st = ST_MNT_REPLAY;
+    }
     return;
   }
+
+  case ST_MNT_RD_LOG:
+    cur.st = ST_MNT_REPLAY;
+    return;
 
   case ST_MNT_REPLAY:
     replay_log();

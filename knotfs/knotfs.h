@@ -29,11 +29,11 @@
  *
  *  Key educational features:
  *    - Dual superblock + log-structured metadata updates
- *                   - Cooperative async state machine (knotfs_run() event loop)
- *                   - Copy-on-Write atomic file writes
- *                   - Wear leveling (lowest-wear block selection)
- *                   - Power-loss safe remount (superblock redundancy)
- *                   - Tick-based flash delay simulation (observable async behavior)
+ *    - Cooperative async state machine (knotfs_run() event loop)
+ *    - Copy-on-Write atomic file writes
+ *    - Wear leveling (lowest-wear block selection)
+ *    - Power-loss safe remount (superblock redundancy)
+ *    - Tick-based flash delay simulation (observable async behavior)
  *********************************************************************************************************************/
 
 #ifndef KNOTFS_H_
