@@ -32,8 +32,8 @@ make && make test
 本书是"汽车电子七部曲"系列中的一部。另外五部已发布：
 
 - **[从沙子到车辙——一个工程师的理解](https://github.com/Lularible/from-sand-to-ruts)** — 从图灵机到 CAN 总线，从半导体物理到 AUTOSAR，一部为汽车电子工程师写的全景入门
+- **[PTP 技术书——从思想实验到协议实现](https://github.com/Lularible/ptp-book)** — 从时间同步的思想实验开始，到 PTP 协议实现，逐机制拆解 + 动手实践
 - **[HSM 技术书——从思想实验到安全基石](https://github.com/Lularible/hsm-book)** — 从岩画密码学到硬件安全模块，完整覆盖车载 HSM 的技术链路
-- **[存储 技术书——在不可靠的硬件上构建可靠的数据家园](https://github.com/Lularible/storage-book)** — 一本关于存储技术演进与文件系统实现的深度技术书籍
 - **[UDS 技术书——从望闻问切到UDS协议实现](https://github.com/Lularible/uds-book)** — 一本从诊断元问题出发，直通ISO 14229协议规范与AUTOSAR DCM源码、再到亲手实现UDS栈的技术书
 - **[功能安全——ISO 26262分析与代码实现](https://github.com/Lularible/safety-book-iso26262)** — 以免疫系统为叙事线索的功能安全技术书。兼顾ISO 26262标准分析、源码拆解与动手实现
 
