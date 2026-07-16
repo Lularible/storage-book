@@ -2,6 +2,10 @@
 
 一本从结绳记事到 Flash 物理、从文件系统理论到动手实现的存储技术书。
 
+## 在线阅读
+
+[📖 在线浏览本书](https://web-l.github.io/lularible-books/storage-book/index.html)
+
 ## 运行效果
 <img width="910" height="774" alt="knotfs" src="https://github.com/user-attachments/assets/71361d1a-2491-4d0a-bfc8-3af04c456b9f" />
 
@@ -36,6 +40,12 @@ make && make test
 - **[HSM 技术书——从思想实验到安全基石](https://github.com/Lularible/hsm-book)** — 从岩画密码学到硬件安全模块，完整覆盖车载 HSM 的技术链路
 - **[UDS 技术书——从望闻问切到UDS协议实现](https://github.com/Lularible/uds-book)** — 一本从诊断元问题出发，直通ISO 14229协议规范与AUTOSAR DCM源码、再到亲手实现UDS栈的技术书
 - **[功能安全——ISO 26262分析与代码实现](https://github.com/Lularible/safety-book-iso26262)** — 以免疫系统为叙事线索的功能安全技术书。兼顾ISO 26262标准分析、源码拆解与动手实现
+
+## 致谢
+
+- 感谢 [@web-l](https://github.com/web-l) 构建并维护本系列的 [mdBook 在线阅读站](https://web-l.github.io/lularible-books/)，方便了大家阅读。
+
+---
 
 "汽车电子七部曲"是一个持续更新的系列——还有软件工程在打磨中。
 如果觉得这系列对你有用，不妨给个 ⭐ 关注进度。
