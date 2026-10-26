@@ -61,7 +61,7 @@ extern "C" {
 #define KNOTFS_DIRECT_BLKS (8U) /* max data blocks per file         */
 #define KNOTFS_FILE_LIMIT (KNOTFS_DIRECT_BLKS * KNOTFS_BLOCK_SIZE) /* 32K */
 
-#define KNOTFS_MAGIC (0x4B4E4653U) /* "KNFS" little-endian           */
+#define KNOTFS_MAGIC (0x4B4E4653U) /* "KNFS" big-endian bytes        */
 #define KNOTFS_VERSION (1U)
 
 #define KNOTFS_LOG_THRESHOLD (50U) /* compact when log 50% full */

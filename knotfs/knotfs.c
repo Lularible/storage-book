@@ -22,7 +22,7 @@
  * SOFTWARE.
  *
  * -----------------------------------------------------------------------------
- * knotfs.c — KnotFS core implementation (teaching edition, ~1150 lines)
+ * knotfs.c: KnotFS core implementation (teaching edition, ~1165 lines)
  *  Async log-structured file system using RAM to simulate NOR Flash.
  *  Architecture: request queue → knotfs_run() event loop → state machines → flash[].
  */
@@ -207,6 +207,7 @@ static void fdev_write(uint32_t blk, const void *src, uint32_t off,
 static void fdev_erase(uint32_t blk) {
   fdev.op = FOP_ER;
   fdev.blk_idx = blk;
+  fdev.blk_off = 0;
   fdev.ticks_left = FDEV_TICK_ER;
 }
 
